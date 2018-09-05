@@ -11,6 +11,14 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
+import { PassDriverPage } from '../pages/pass-driver/pass-driver';
+import { PassFronEndPage } from '../pages/pass-fron-end/pass-fron-end';
+import { DriverFrontEndPage } from '../pages/driver-front-end/driver-front-end';
+import { SignupPage } from '../pages/signup/signup';
+import {UserService } from '../services/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -18,11 +26,16 @@ import { LoginPage } from '../pages/login/login';
     AboutPage,
     ContactPage,
     HomePage,
+    LoginPage,
     TabsPage,
-    LoginPage
+    PassDriverPage,
+    PassFronEndPage,
+    DriverFrontEndPage,SignupPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -32,11 +45,16 @@ import { LoginPage } from '../pages/login/login';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    PassDriverPage,
+    PassFronEndPage,
+    DriverFrontEndPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    UserService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

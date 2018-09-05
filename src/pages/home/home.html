@@ -1,17 +1,37 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<!-- <ion-content id="welcome">
+  <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
+  <ion-content class = "body">
+    <h1 class = "The-Future-of-Ridesh">The Future of Ridesharing is Here</h1>
+    <div class = "The-easiest-solution" >The easiest solution for long distance carsharing, all from your phone</div>
+    <div class = "Main-button"> <img src="assets/imgs/main-button@3x.png"  (click)="login()" > </div>
+    <div class="Sign-Up" ><a (click)="signup()"> Signup </a></div>
+  </ion-content>
+</ion-content> -->
+
+<ion-content id="welcome">
+  <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
+  <ion-grid class = "body" >
+      <ion-row>
+          <ion-col center text-center>
+              <img src="assets/imgs/logo-2-copy-2@2x.png"/>
+              <h1 class = "The-Future-of-Ridesh">The Future of Ridesharing is Here</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col center text-center>
+                <div class = "The-easiest-solution" >The easiest solution for long distance carsharing, all from your phone</div>
+            </ion-col>
+          </ion-row>
+    <ion-row>
+      <ion-col center text-center>
+        <div class = "Main-button"> <img src="assets/imgs/main-button@3x.png"  (click)="toLogin()" > </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col center text-center>
+        <div class="Sign-Up" ><a (click)="toSignup()"> Signup </a></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

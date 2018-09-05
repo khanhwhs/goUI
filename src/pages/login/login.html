@@ -1,17 +1,28 @@
+<ion-header no-border>
+    <ion-navbar>
+      <ion-title>
+        Login
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
 <ion-content padding>
   <div>
+      <!-- <img
+      src="assets/imgs/back@3x.png" (click) = "back()"> -->
     <img
-      class="login-app-logo"
-      src="https://image.ibb.co/eYcVfo/goyu_logo_2x.png">
+      class="goyu_logo"
+       src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
   </div>
 
   <ion-item>
-    <ion-input type="email"
-               placeholder="Username"></ion-input>
+    <ion-input [ngStyle]="{'border-bottom': emailColor}" type="email" [(ngModel)]="user.userName"
+               placeholder="Email Address"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input type="password"
+    <ion-input  type="password" [(ngModel)]="user.userPassword"
                placeholder="Password"></ion-input>
   </ion-item>
 

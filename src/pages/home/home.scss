@@ -1,3 +1,45 @@
 page-home {
+    .The-Future-of-Ridesh {
+        height: 15px;
+        font-family: Roboto;
+        font-size: 20px;
+        text-align: center;
+        color: #000000;
+    }
+
+    .The-easiest-solution {
+        height: 50px;
+        font-family: Roboto;
+        font-size: 15px;
+        text-align: center;
+        color: #000000;
+      }
+
+
+    a:hover,a:visited { color:#000; }
+    
+    .goyu_logo {
+        width: 120px;
+        height: 82px;
+        object-fit: contain;
+        width: 100%;
+    }
+    .Sign-Up {
+        font-family: Roboto;
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+        color: black;
+    }
+
+    .Main-button {
+        width: 100%;
+        text-align: center;
+      }
+    .body {
+        object-fit: contain;
+        background-image:  url(../assets/imgs/background@3x.png);
+        height:100%;
+    }
 
 }
