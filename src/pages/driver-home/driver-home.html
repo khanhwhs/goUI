@@ -1,0 +1,65 @@
+<ion-header no-border>
+    <ion-toolbar>
+      <div class = "center">
+          <img src="assets/imgs/back@3x.png" (click) = "back()"/>
+          <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
+          <img src="assets/imgs/profile@2x.png" (click) = "back()"/>
+        </div>
+       
+  </ion-toolbar>
+</ion-header>
+<ion-content id="welcome">
+
+<ion-content padding>
+  <div *ngIf = "isDataAvai">
+      <div *ngFor="let d of data">
+          <ion-grid class="tripsTable">
+            <ion-row>
+                <ion-col>
+                    Date: {{ d.createdOn }}
+                </ion-col>
+                <ion-col>
+                    Time: {{ d.startTime }}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    From: {{ d.startAddrId }}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    To: {{ d.destAddrId }}
+                </ion-col>
+            </ion-row>
+            <br>
+          </ion-grid>
+          </div>
+  </div>
+
+  <div  *ngIf = "isDataAvai != true">
+      You don't have anytrips
+  </div>
+  
+  <div>
+      <ion-item>
+          <button  color="button" ion-button block color="yellow" (click)="createTrip()">
+            Create Trip
+          </button>
+        </ion-item> 
+  </div>
+    
+</ion-content>
+
+
+<!-- <td> 
+    <h3>Time: {{ d.startTime }}</h3>
+</td>
+<td>
+    <h3>From: {{ d.startAddrId }}</h3>
+</td>
+<td>
+    <h3>To: {{ d.destAddrId }}</h3>
+</td> -->
+
+

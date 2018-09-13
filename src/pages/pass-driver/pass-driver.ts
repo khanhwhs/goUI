@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PassFronEndPage } from '../pass-fron-end/pass-fron-end';
 import { DriverFrontEndPage } from '../driver-front-end/driver-front-end';
+import { DriverHomePage } from '../driver-home/driver-home';
 
 /**
  * Generated class for the PassDriverPage page.
@@ -18,18 +19,26 @@ import { DriverFrontEndPage } from '../driver-front-end/driver-front-end';
 export class PassDriverPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PassDriverPage');
+    // console.log(this.navParams.get('data'));
   }
 
   passClick(){
-    this.navCtrl.push(PassFronEndPage);
+    let data = this.navParams.get('data');
+    this.navCtrl.push(PassFronEndPage,{
+      data: data, from : "driverOrPass"
+    });
   }
 
   driverClick(){
-    this.navCtrl.push(DriverFrontEndPage);
+    let data = this.navParams.get('data');
+    this.navCtrl.push(DriverHomePage,  {
+      data: data, from : "driverOrPass"
+    });
   }
 
 }

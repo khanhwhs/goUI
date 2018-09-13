@@ -1,0 +1,22 @@
+page-driver-home {
+    .goyu_logo {
+        width: 120px;
+        height: 60px;
+        -o-object-fit: contain;
+        object-fit: contain;
+        width: 70%;
+    }
+
+    .tripsTable{
+        background-color: rgb(210, 174, 81);
+        border-radius: 15px;
+        border: 1px solid rgb(0, 0, 0);
+        background-image:  url(../assets/imgs/background@3x.png);
+        padding: 5px;
+    }
+
+    // .center{    
+    //     display:inline-block;
+    // }
+
+}

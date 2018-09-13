@@ -16,21 +16,42 @@
        src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
   </div>
 
-  <ion-item>
-    <ion-input [ngStyle]="{'border-bottom': emailColor}" type="email" [(ngModel)]="user.userName"
-               placeholder="Email Address"></ion-input>
-  </ion-item>
+  <form [formGroup]="credentialsForm">
 
-  <ion-item>
-    <ion-input  type="password" [(ngModel)]="user.userPassword"
-               placeholder="Password"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input [formControl]="credentialsForm.controls['email']"
+        [(ngModel)]="user.userName" type="email"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input [formControl]="credentialsForm.controls['password']"
+        [(ngModel)]="user.userPassword"  type="password"></ion-input>
+      </ion-item>      
+    
+      <ion-item>
+        <button  color="button" class="login-button" ion-button block color="blue" (click)="onSignInClick()">
+          Sign in
+        </button>
+      </ion-item>  
+  </form>
+<!--     
+      <ion-row>
+        <ion-col text-center>
+          <button ion-button clear color="light" (click)="onForgotPassword()">
+            Forgot your password?
+          </button>
+        </ion-col>
+      </ion-row> -->
+    
 
-  <button ion-button block
+
+  <!-- <button ion-button block
           color="button"
           class="login-button"
           (click)="onSignInClick()">Sign In
-  </button>
+  </button> -->
 
   <!-- <button ion-button
           block
@@ -42,7 +63,7 @@
     Google Sign In
   </button> -->
 
-  <button ion-button
+  <!-- <button ion-button
           block
           icon-start
           color="facebook-button"
@@ -50,5 +71,5 @@
           (click)="onFacebookClick()">
     <ion-icon name="logo-facebook"></ion-icon>
     Facebook Login
-  </button>
+  </button> -->
 </ion-content>

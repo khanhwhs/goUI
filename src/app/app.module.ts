@@ -18,6 +18,8 @@ import { SignupPage } from '../pages/signup/signup';
 import {UserService } from '../services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { DriverHomePage } from '../pages/driver-home/driver-home';
+import { PassengerHomePage } from '../pages/passenger-home/passenger-home';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { HttpModule } from '@angular/http';
     TabsPage,
     PassDriverPage,
     PassFronEndPage,
-    DriverFrontEndPage,SignupPage
+    DriverFrontEndPage,SignupPage,
+    DriverHomePage,
+    PassengerHomePage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,9 @@ import { HttpModule } from '@angular/http';
     PassDriverPage,
     PassFronEndPage,
     DriverFrontEndPage,
-    SignupPage
+    SignupPage,
+    DriverHomePage,
+    PassengerHomePage
   ],
   providers: [
     StatusBar,

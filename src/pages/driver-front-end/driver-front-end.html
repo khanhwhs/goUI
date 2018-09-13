@@ -1,23 +1,58 @@
 <ion-header no-border>
     <ion-navbar color="nav-color">
-      <ion-title>
-        Driver
-      </ion-title>
+      <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
     </ion-navbar>
-  </ion-header>
-
+</ion-header>
 <ion-content id="welcome">
-    <!-- <img src="assets/imgs/back@3x.png" (click) = back()> -->
-    <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
-    <!-- <div class = "question" >What do you want to be today?</div> -->
-    <ion-grid>
-      <ion-row>
-      <ion-col center text-center>
-      </ion-col>
-      </ion-row>
-      <ion-row class="driverRow">
-        <ion-col center text-center>
 
+    <ion-grid>
+      <ion-row >
+        <ion-col>
+            <form>
+                <ion-item>
+                     <div class="Lets-plan-your-trip" >Let’s plan your trip</div>
+                </ion-item>
+                <ion-item>
+                    <ion-label>From</ion-label>
+                    <ion-input type="text" [(ngModel)]="trip.startAddrId" name="startAddrId" required></ion-input>
+                </ion-item>
+                  
+                  <ion-item>
+                    <ion-label >To</ion-label>
+                    <ion-input type="text" [(ngModel)]="trip.destAddrId" name="destAddrId" required> </ion-input>
+                  </ion-item>   
+
+                  <ion-item>
+                      <ion-label>Date</ion-label>
+                      <ion-datetime displayFormat="MMM DD, YYYY"  [(ngModel)]="trip.createdOn"  name="createdOn" required></ion-datetime>
+                    </ion-item>
+  
+                    <ion-item>
+                        <ion-label>Departure Time</ion-label>
+                        <ion-datetime displayFormat="HH:mm A" [(ngModel)]="trip.startTime" name="startTime"></ion-datetime>
+                      </ion-item> 
+  
+                      <ion-item>
+                          <ion-label >Round Trip</ion-label>
+                          <ion-select [(ngModel)]="trip.isRoundTrip" name="isRoundTrip" interface="action-sheet">
+                              <ion-option value="1" selected = "true">Yes</ion-option>
+                              <ion-option value="0">No</ion-option>
+                          </ion-select>
+                      </ion-item> 
+                
+                      <ion-item>
+                          <ion-label >Number of Seats</ion-label>
+                          <ion-input type="text" [(ngModel)]="trip.seats" name="seats"></ion-input>
+                      </ion-item> 
+  
+                      <ion-item>
+                          <ion-label floating>Luggage Desc.</ion-label>
+                          <ion-input type="text" [(ngModel)]="trip.luggageDesc" name="luggageDesc"></ion-input>
+                      </ion-item> 
+
+                    <button ion-button type="submit" (click)="onPostTrip()" block>Done</button>
+
+              </form>
         </ion-col>
       </ion-row>
     </ion-grid>

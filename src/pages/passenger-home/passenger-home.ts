@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PassDriverPage } from '../pass-driver/pass-driver';
 import { Http } from '@angular/http';
-import { DriverHomePage } from '../driver-home/driver-home';
-import { PassengerHomePage } from '../passenger-home/passenger-home';
 
 /**
- * Generated class for the PassFronEndPage page.
+ * Generated class for the PassengerHomePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,15 +11,16 @@ import { PassengerHomePage } from '../passenger-home/passenger-home';
 
 @IonicPage()
 @Component({
-  selector: 'page-pass-fron-end',
-  templateUrl: 'pass-fron-end.html',
+  selector: 'page-passenger-home',
+  templateUrl: 'passenger-home.html',
 })
-export class PassFronEndPage {
+export class PassengerHomePage {
+
   passingJson = null;
 
   data : any;
   isDataAvai : boolean;
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.passingJson = JSON.parse(this.navParams.get('data')); 
   }
@@ -49,15 +47,6 @@ export class PassFronEndPage {
         else this.isDataAvai = false;
         console.log(this.data);
       });
-  }
-  back(){
-    this.navCtrl.push(PassDriverPage);
-  }
-  searchTrip(){
-      let data = this.navParams.get('data');
-    this.navCtrl.push(PassengerHomePage,  {
-      data: data
-    });
   }
 
 }

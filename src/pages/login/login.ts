@@ -4,8 +4,8 @@ import { PassDriverPage } from '../pass-driver/pass-driver';
 import { HomePage } from '../home/home';
 import { User } from '../../models/User';
 import { Http } from '@angular/http';
-import { HttpParams } from '@angular/common/http';
 import {Location} from '@angular/common';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 /**
  * Generated class for the LoginPage page.
@@ -23,10 +23,15 @@ export class LoginPage {
   user = new User();
   loading: Loading;
   emailColor: string = 'green';
+  credentialsForm: FormGroup;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-    public navParams: NavParams, public http: Http, private _location: Location) {
-    // console.log("This url is:" + this.location.href);
+    public navParams: NavParams, public http: Http, private formBuilder: FormBuilder) {
+     
+    this.credentialsForm = this.formBuilder.group({
+      email: [''],
+      password: ['']
+    });
   }
 
   ionViewDidLoad() {
@@ -36,11 +41,12 @@ export class LoginPage {
 
 
   onSignInClick(){
+    let url = document.URL.split('#')[0];
     let headers = new Headers();
+    if( url.indexOf("localhost") > 0) url = "http://localhost:8080/";
+    else url = "http://Gouspring.us-east-2.elasticbeanstalk.com/";
       headers.append('Content-Type', 'application/json');
-      let params = new HttpParams().set("userName",this.user.userName).set("userPassword", this.user.userPassword);
-
-      this.http.get('http://Gouspring.us-east-2.elasticbeanstalk.com/authenticateUser', {
+      this.http.get(url + 'getUser', {
         params: {
           userName: this.user.userName,
           userPassword: this.user.userPassword
@@ -48,8 +54,10 @@ export class LoginPage {
       })
       .toPromise()
       .then((data: any) => {
-            if( data._body == "true"){
-              this.navCtrl.push(PassDriverPage);
+            if( data._body != null){
+              this.navCtrl.push(PassDriverPage,  {
+                data: data._body
+              });
             }else{
               this.emailColor = "red";
               alert("Wrong Username/Password");

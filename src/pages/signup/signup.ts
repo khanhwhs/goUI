@@ -68,12 +68,6 @@ export class SignupPage {
 
       this.navCtrl.push(PassDriverPage); 
       
-
-
-      // this.http.get('http://localhost:8080/getAllUsers').subscribe(
-      //   (data: any) => console.log(data)
-      // );
-      // this.navCtrl.push(PassDriverPage); 
     }
   }
 
