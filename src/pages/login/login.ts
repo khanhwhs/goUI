@@ -54,7 +54,7 @@ export class LoginPage {
       })
       .toPromise()
       .then((data: any) => {
-            if( data._body != null){
+            if( data._body){
               this.navCtrl.push(PassDriverPage,  {
                 data: data._body
               });

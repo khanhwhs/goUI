@@ -18,16 +18,18 @@ import { PassengerHomePage } from '../passenger-home/passenger-home';
   templateUrl: 'pass-fron-end.html',
 })
 export class PassFronEndPage {
-  passingJson = null;
+  passingJson : any;
 
   data : any;
   isDataAvai : boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+    
     this.passingJson = JSON.parse(this.navParams.get('data')); 
   }
 
   ionViewDidLoad() {
+    // console.log(this.navParams.get('data'));
     let url = document.URL.split('#')[0];
     let headers = new Headers();
     console.log('ionViewDidLoad: ' + this.passingJson.userId);

@@ -30,14 +30,14 @@ export class PassDriverPage {
   passClick(){
     let data = this.navParams.get('data');
     this.navCtrl.push(PassFronEndPage,{
-      data: data, from : "driverOrPass"
+      data: data
     });
   }
 
   driverClick(){
     let data = this.navParams.get('data');
     this.navCtrl.push(DriverHomePage,  {
-      data: data, from : "driverOrPass"
+      data: data
     });
   }
 
