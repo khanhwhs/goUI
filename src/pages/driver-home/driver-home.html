@@ -1,15 +1,13 @@
-<ion-header no-border>
-    <ion-toolbar>
-      <div class = "center">
-          <img src="assets/imgs/back@3x.png" (click) = "back()"/>
-          <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
-          <img src="assets/imgs/profile@2x.png" (click) = "back()"/>
-        </div>
-       
-  </ion-toolbar>
+<ion-header>
+    <ion-navbar color="nav-color">
+        <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
+      <ion-buttons end>
+        <button ion-button icon-only>
+          <ion-icon name="person"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
 </ion-header>
-<ion-content id="welcome">
-
 <ion-content padding>
   <div *ngIf = "isDataAvai">
       <div *ngFor="let d of data">
@@ -50,16 +48,5 @@
   </div>
     
 </ion-content>
-
-
-<!-- <td> 
-    <h3>Time: {{ d.startTime }}</h3>
-</td>
-<td>
-    <h3>From: {{ d.startAddrId }}</h3>
-</td>
-<td>
-    <h3>To: {{ d.destAddrId }}</h3>
-</td> -->
 
 

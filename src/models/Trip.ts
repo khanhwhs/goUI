@@ -10,6 +10,7 @@ export class Trip {
     carId : any;
     luggageDesc : String ;
     isRoundTrip : String;
+    tripCost : String;
     constructor() { 
     }
  } 

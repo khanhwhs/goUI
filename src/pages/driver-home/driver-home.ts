@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Navbar } from 'ionic-angular';
 import { DriverFrontEndPage } from '../driver-front-end/driver-front-end';
 import { Http } from '@angular/http';
 import { PassDriverPage } from '../pass-driver/pass-driver';
@@ -17,6 +17,7 @@ import { PassDriverPage } from '../pass-driver/pass-driver';
   templateUrl: 'driver-home.html',
 })
 export class DriverHomePage {
+  @ViewChild(Navbar) navBar: Navbar;
   passingJson = null;
 
   data : any;
@@ -29,6 +30,7 @@ export class DriverHomePage {
   }
 
   ionViewDidLoad() {
+    this.setBackButtonAction();
     let url = document.URL.split('#')[0];
     let headers = new Headers();
     console.log('ionViewDidLoad DriverHomePage');
@@ -53,6 +55,7 @@ export class DriverHomePage {
   }
 
   createTrip(){
+    console.log(this.navParams.get('data'));
     let data = this.navParams.get('data');
     this.navCtrl.push(DriverFrontEndPage,  {
       data: data
@@ -66,5 +69,16 @@ export class DriverHomePage {
       data: data
     });
   }
+
+  //Method to override the default back button action
+  setBackButtonAction(){
+    this.navBar.backButtonClick = () => {
+      //Write here wherever you wanna do
+      let data = this.navParams.get('data');
+        this.navCtrl.push(PassDriverPage,  {
+          data: data
+        });
+      }
+ }
 
 }

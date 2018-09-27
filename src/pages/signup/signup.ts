@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 import { PassDriverPage } from '../pass-driver/pass-driver';
 import { HttpClientModule } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the SignupPage page.
@@ -65,8 +66,7 @@ export class SignupPage {
       .subscribe(res => console.log("MAP")
                 ,error => console.log(error),
                 () => console.log("Finished"));
-
-      this.navCtrl.push(PassDriverPage); 
+      this.navCtrl.push(LoginPage); 
       
     }
   }

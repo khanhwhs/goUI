@@ -1,16 +1,13 @@
-<ion-header no-border>
-    <ion-toolbar>
-      <div class = "center">
-          <img src="assets/imgs/back@3x.png" (click) = "back()"/>
-          <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
-          <img src="assets/imgs/profile@2x.png" (click) = "back()"/>
-        </div>
-       
-  </ion-toolbar>
+<ion-header>
+    <ion-navbar color="nav-color" >
+            <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
+        <ion-buttons end>
+        <button ion-button icon-only>
+            <ion-icon name="person"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
-
- 
-
 <ion-content padding>
     <div *ngIf = "isDataAvai">
         <div *ngFor="let d of data">
@@ -33,6 +30,16 @@
                       To: {{ d.destAddrId }}
                   </ion-col>
               </ion-row>
+              <ion-row>
+                    <ion-col>
+                        Trip Cost: {{ d.tripCost }}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <div class="TripCost" >Driver: {{ d.driver.firstName}} {{ d.driver.firstName}} &emsp; &emsp;phone: {{ d.driver.phoneNo}}   </div> 
+                    </ion-col>
+                </ion-row>
               <br>
             </ion-grid>
             </div>

@@ -53,9 +53,6 @@ export class DriverFrontEndPage {
     var headers = new Headers();
         headers["Access-Control-Allow-Origin"] = "*";
         headers.append('Content-Type', 'application/json');
-      let options = {
-          headers: headers
-     };
      console.log(this.json);
      this.trip.userCarId = this.json.userId;
      

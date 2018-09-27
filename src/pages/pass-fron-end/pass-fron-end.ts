@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Navbar } from 'ionic-angular';
 import { PassDriverPage } from '../pass-driver/pass-driver';
 import { Http } from '@angular/http';
 import { DriverHomePage } from '../driver-home/driver-home';
@@ -18,6 +18,7 @@ import { PassengerHomePage } from '../passenger-home/passenger-home';
   templateUrl: 'pass-fron-end.html',
 })
 export class PassFronEndPage {
+  @ViewChild(Navbar) navBar: Navbar;
   passingJson : any;
 
   data : any;
@@ -29,7 +30,8 @@ export class PassFronEndPage {
   }
 
   ionViewDidLoad() {
-    // console.log(this.navParams.get('data'));
+    this.setBackButtonAction();
+    console.log(this.navParams.get('data'));
     let url = document.URL.split('#')[0];
     let headers = new Headers();
     console.log('ionViewDidLoad: ' + this.passingJson.userId);
@@ -53,13 +55,26 @@ export class PassFronEndPage {
       });
   }
   back(){
-    this.navCtrl.push(PassDriverPage);
+    let data = this.navParams.get('data');
+    this.navCtrl.push(PassDriverPage,  {
+      data: data
+    });
   }
   searchTrip(){
       let data = this.navParams.get('data');
     this.navCtrl.push(PassengerHomePage,  {
       data: data
     });
+  }
+
+  setBackButtonAction(){
+    this.navBar.backButtonClick = () => {
+      //Write here wherever you wanna do
+      let data = this.navParams.get('data');
+        this.navCtrl.push(PassDriverPage,  {
+          data: data
+        });
+      }
   }
 
 }

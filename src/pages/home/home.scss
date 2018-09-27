@@ -20,7 +20,8 @@ page-home {
     
     .goyu_logo {
         width: 120px;
-        height: 82px;
+        height: 60px;
+        -o-object-fit: contain;
         object-fit: contain;
         width: 100%;
     }

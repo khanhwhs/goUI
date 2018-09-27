@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import { PassFronEndPage } from '../pass-fron-end/pass-fron-end';
+import { User } from '../../models/User';
+import { PassDriverPage } from '../pass-driver/pass-driver';
 
 /**
  * Generated class for the PassengerHomePage page.
@@ -29,6 +31,15 @@ export class PassengerHomePage {
     this.isExpand = false;
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   openMore(data, i){
     console.log('EXPANDING index: --- ' + i +  " --- and data is : " + data);
     this.currentIndex = i;
@@ -54,10 +65,10 @@ export class PassengerHomePage {
       .then((result: any) => {
         
         this.data = JSON.parse(result._body);
-        console.log('LENGTH: ' + this.data.length);
+        // console.log('LENGTH: ' + this.data.length);
         if(this.data.length >0) this.isDataAvai = true;
         else this.isDataAvai = false;
-        console.log(this.data);
+        // console.log(this.data);
       });
   }
 
@@ -66,6 +77,31 @@ export class PassengerHomePage {
     this.navCtrl.push(PassFronEndPage,  {
       data: data
     });
+  }
+
+  bookTrip(){
+    let data = this.navParams.get('data');
+    let url = document.URL.split('#')[0];
+    let user = new User;
+    if( url.indexOf("localhost") > 0) url = "http://localhost:8080/";
+    else url = "http://Gouspring.us-east-2.elasticbeanstalk.com/";
+    
+    var headers = new Headers();
+        headers["Access-Control-Allow-Origin"] = "*";
+        headers.append('Content-Type', 'application/json');
+
+    console.log(this.data[this.currentIndex]);
+     let PTrip = {"tripId" : this.data[this.currentIndex].tripId, "userId" : this.passingJson.userId};
+
+     console.log(PTrip);
+     this.http.post(url + 'addPTrip', JSON.stringify(PTrip),{headers: headers})
+     .map(res => res.json())
+     .subscribe(res => console.log("MAP")
+               ,error => console.log(error),
+               () => console.log("Finished"));
+
+      this.navCtrl.push(PassFronEndPage,{data: data});
+    
   }
 
 }
