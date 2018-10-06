@@ -1,9 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Navbar } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Navbar, PopoverController } from 'ionic-angular';
 import { PassDriverPage } from '../pass-driver/pass-driver';
 import { Http } from '@angular/http';
 import { DriverHomePage } from '../driver-home/driver-home';
 import { PassengerHomePage } from '../passenger-home/passenger-home';
+import { CancelTripPage } from '../cancel-trip/cancel-trip';
+import { MorePage } from '../more/more';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the PassFronEndPage page.
@@ -23,22 +27,38 @@ export class PassFronEndPage {
 
   data : any;
   isDataAvai : boolean;
+  trips: Observable<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController,private httpClient: HttpClient, public navParams: NavParams, public http: Http, public popoverCtrl: PopoverController) {
     
     this.passingJson = JSON.parse(this.navParams.get('data')); 
+    this.loadPassengersTrip();
+
   }
 
-  ionViewDidLoad() {
-    this.setBackButtonAction();
-    console.log(this.navParams.get('data'));
+  loadPTrips(){
+    let url = document.URL.split('#')[0];
+    let headers = new Headers();
+    console.log('ionViewDidLoad: ' + this.passingJson.userId);
+    if( url.indexOf("localhost") > 0) url = "http://localhost:8080/";
+    else url = "http://Gouspring.us-east-2.elasticbeanstalk.com/";
+    let params = new HttpParams().set('passId', this.passingJson.userId);
+    this.trips = this.httpClient.get(url + 'getPassengerTrips',{ params: params });
+    this.trips
+    .subscribe(data => {
+      console.log('my data: ', data);
+      this.data = data;
+    })
+  }
+
+  async loadPassengersTrip(){
     let url = document.URL.split('#')[0];
     let headers = new Headers();
     console.log('ionViewDidLoad: ' + this.passingJson.userId);
     if( url.indexOf("localhost") > 0) url = "http://localhost:8080/";
     else url = "http://Gouspring.us-east-2.elasticbeanstalk.com/";
       headers.append('Content-Type', 'application/json');
-      this.http.get(url + 'getPassengerTrips', {
+      await this.http.get(url + 'getPassengerTrips', {
         params: {
           passId: this.passingJson.userId
           // driverId: 2
@@ -54,6 +74,28 @@ export class PassFronEndPage {
         console.log(this.data);
       });
   }
+
+  presentPopover(myEvent) {
+    let data = this.navParams.get('data');
+    let popover = this.popoverCtrl.create(MorePage, {data:data});
+    popover.present({
+      ev: myEvent
+    });
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
+  ionViewDidLoad() {
+    this.setBackButtonAction();
+    
+  }
   back(){
     let data = this.navParams.get('data');
     this.navCtrl.push(PassDriverPage,  {
@@ -65,6 +107,17 @@ export class PassFronEndPage {
     this.navCtrl.push(PassengerHomePage,  {
       data: data
     });
+  }
+
+  cancelTrip(i){
+    let trip = this.data[i];
+    console.log(trip);
+    let data = this.navParams.get('data');
+    console.log(data);
+    this.navCtrl.push(CancelTripPage,  {
+      data,trip
+    });
+
   }
 
   setBackButtonAction(){

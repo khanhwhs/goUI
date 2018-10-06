@@ -1,6 +1,6 @@
 page-passenger-home {
     .question {
-        height: 8%;
+        height: 5%;
         font-family: Roboto;
         font-size: 17px;
         font-weight: 300;
@@ -53,12 +53,16 @@ page-passenger-home {
         color: rgb(252, 190, 35);
       }
       .tripsContent{
-        background-color: rgb(210, 174, 81);
+        
+        border-bottom: 1px solid #57def9;
         background-image:  url(../assets/imgs/background@3x.png);
+        padding: 0px;
+        
+        
     }
-    .tripsGrid{
-        border: 1px solid #57def9;
-    }
+    // .tripsGrid{
+        
+    // }
     .tableProfile{
         width : 70%;
     }
@@ -80,6 +84,18 @@ page-passenger-home {
     }
 
     .Departure{
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+        background-color: white;
+      }
+
+      .fromTo{
         font-family: Roboto;
         font-size: 15px;
         font-weight: normal;

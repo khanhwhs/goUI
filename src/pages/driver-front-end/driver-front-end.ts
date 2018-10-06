@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Trip } from '../../models/Trip';
 import { Http, Headers } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'; 
 import { DriverHomePage } from '../driver-home/driver-home';
+import { MorePage } from '../more/more';
 
 /**
  * Generated class for the DriverFrontEndPage page.
@@ -26,7 +27,7 @@ export class DriverFrontEndPage {
   json = null;
   
 
-  constructor(public navCtrl: NavController,
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController,
               public navParams: NavParams,
               private formBuilder: FormBuilder, public http : Http) {
    this.data = this.navParams.get('data');
@@ -41,6 +42,14 @@ export class DriverFrontEndPage {
       carId : [''],
       luggageDesc : [''],
       isRoundTrip : ['']
+    });
+  }
+
+  presentPopover(myEvent) {
+    let data = this.navParams.get('data');
+    let popover = this.popoverCtrl.create(MorePage, {data:data});
+    popover.present({
+      ev: myEvent
     });
   }
 
@@ -65,9 +74,9 @@ export class DriverFrontEndPage {
       .subscribe(res => console.log("MAP")
                 ,error => console.log(error),
                 () => console.log("Finished"));
-        this.navCtrl.push(DriverHomePage,  {
-          data: this.data, from : "tripCreate"
-        });
+        setTimeout( () => {
+          this.navCtrl.push(DriverHomePage,{data: this.navParams.get('data')});
+        } , 400 );
     }
      
   }

@@ -2,22 +2,31 @@
     <ion-navbar color="nav-color" >
             <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
         <ion-buttons end>
-        <button ion-button icon-only>
-            <ion-icon name="person"></ion-icon>
+        <button ion-button icon-only (click) = "presentPopover($event)">
+            <ion-icon name="more"></ion-icon>
         </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
+        <div class = "question" >Passenger Home</div>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <div *ngIf = "isDataAvai">
-        <div *ngFor="let d of data">
+        <div *ngFor="let d of data; let i = index;">
             <ion-grid class="tripsTable">
               <ion-row>
-                  <ion-col>
+                  <ion-col class = "col col-50">
                       Date: {{ d.createdOn }}
                   </ion-col>
-                  <ion-col>
+                  <ion-col col-4 >
                       Time: {{ d.startTime }}
+                  </ion-col >
+                  <ion-col col-1>
+                    <button (click)="cancelTrip(i)">
+                            <ion-icon name="close"></ion-icon>
+                    </button>
                   </ion-col>
               </ion-row>
               <ion-row>
@@ -31,13 +40,18 @@
                   </ion-col>
               </ion-row>
               <ion-row>
+                <ion-col>
+                   <div>Car Info: {{ d.luggageDesc }}</div> 
+                </ion-col>
+              </ion-row>
+              <ion-row>
                     <ion-col>
                         Trip Cost: {{ d.tripCost }}
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <div class="TripCost" >Driver: {{ d.driver.firstName}} {{ d.driver.firstName}} &emsp; &emsp;phone: {{ d.driver.phoneNo}}   </div> 
+                        <div class="TripCost" >Driver: {{ d.driver.firstName}} {{ d.driver.lastName}} &emsp; &emsp;Phone: {{ d.driver.phoneNo}}   </div> 
                     </ion-col>
                 </ion-row>
               <br>

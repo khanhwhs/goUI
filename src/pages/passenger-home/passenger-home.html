@@ -19,8 +19,8 @@
                 <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
       
           <ion-buttons end>
-            <button ion-button icon-only>
-              <ion-icon name="person"></ion-icon>
+            <button ion-button icon-only (click) = "presentPopover($event)">
+              <ion-icon name="more"></ion-icon>
             </button>
           </ion-buttons>
         </ion-navbar>
@@ -30,14 +30,15 @@
  
 
 <ion-content padding>
+    <div class = "question" >Trips Available</div>
     <ion-refresher (ionRefresh)="doRefresh($event)">
             <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <div *ngIf = "isDataAvai">
         <div *ngFor="let d of data; let i = index;">
-            <ion-grid  class="tripsGrid">
+            <ion-grid class="tripsContent">
                 <!-- <button id='hidden-button' ion-button (click)="openMore()"> -->
-              <ion-row (click)="openMore(d,i)" class="tripsContent">
+              <ion-row (click)="openMore(d,i)" >
 
                   <div class= "tableCol">
                       <img class= "tableProfile" src="assets/imgs/user.png"/>
@@ -51,12 +52,12 @@
                           </ion-row>
                         <ion-row>
                             <ion-col>
-                               <div class="Departure" >From: {{ d.startAddrId }}</div> 
+                               <div class="fromTo" >From: {{ d.startAddrId }}</div> 
                             </ion-col>
                         </ion-row>
                         <ion-row>
                             <ion-col>
-                                <div class="Departure" > To: {{ d.destAddrId }}</div> 
+                                <div class="fromTo" > To: {{ d.destAddrId }}</div> 
                             </ion-col>
                         </ion-row>
                       </div>
@@ -80,7 +81,7 @@
                       </ion-row>
                       <ion-row>
                         <ion-col>
-                           <div>Car info: {{ d.luggageDesc }}</div> 
+                           <div>Car Info: {{ d.luggageDesc }}</div> 
                         </ion-col>
                       </ion-row>
                       <ion-row>
@@ -95,7 +96,6 @@
 
               </ion-row>
 
-              <br>
             </ion-grid>
 
         </div>

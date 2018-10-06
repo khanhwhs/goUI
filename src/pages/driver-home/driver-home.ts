@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Navbar } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Navbar, PopoverController } from 'ionic-angular';
 import { DriverFrontEndPage } from '../driver-front-end/driver-front-end';
 import { Http } from '@angular/http';
 import { PassDriverPage } from '../pass-driver/pass-driver';
+import { MorePage } from '../more/more';
 
 /**
  * Generated class for the DriverHomePage page.
@@ -22,15 +23,12 @@ export class DriverHomePage {
 
   data : any;
   isDataAvai : boolean;
+  currentIndex : any;
 
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-    this.passingJson = JSON.parse(this.navParams.get('data')); 
-  }
-
-  ionViewDidLoad() {
-    this.setBackButtonAction();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public popoverCtrl: PopoverController) {
+    this.passingJson = JSON.parse(this.navParams.get('data'));
     let url = document.URL.split('#')[0];
     let headers = new Headers();
     console.log('ionViewDidLoad DriverHomePage');
@@ -52,6 +50,22 @@ export class DriverHomePage {
         else this.isDataAvai = false;
         console.log(this.data);
       });
+  }
+
+  openMore(d,i){
+    this.currentIndex = i;
+  }
+
+  ionViewDidLoad() {
+    this.setBackButtonAction();
+  }
+
+  presentPopover(myEvent) {
+    let data = this.navParams.get('data');
+    let popover = this.popoverCtrl.create(MorePage, {data:data});
+    popover.present({
+      ev: myEvent
+    });
   }
 
   createTrip(){

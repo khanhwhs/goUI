@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 import { PassFronEndPage } from '../pass-fron-end/pass-fron-end';
 import { DriverFrontEndPage } from '../driver-front-end/driver-front-end';
 import { DriverHomePage } from '../driver-home/driver-home';
+import { MorePage } from '../more/more';
 
 /**
  * Generated class for the PassDriverPage page.
@@ -18,8 +19,15 @@ import { DriverHomePage } from '../driver-home/driver-home';
 })
 export class PassDriverPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
+  constructor(public navCtrl: NavController, public navParams: NavParams, private popoverCtrl: PopoverController) {
+  }
+
+  presentPopover(myEvent) {
+    let data = this.navParams.get('data');
+    let popover = this.popoverCtrl.create(MorePage, {data:data});
+    popover.present({
+      ev: myEvent
+    });
   }
 
   ionViewDidLoad() {
