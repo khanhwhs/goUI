@@ -19,12 +19,35 @@
           </ion-row>
     <ion-row>
       <ion-col center text-center>
-        <div class = "Main-button"> <img src="assets/imgs/main-button@3x.png"  (click)="toLogin()" > </div>
+        <div> 
+          <!-- <img src="assets/imgs/main-button@3x.png"  (click)="toLogin()" >  -->
+          <button ion-button block
+            color="button"
+            class= "longButton" 
+            (click)="toLogin()">Login
+            </button>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col center text-center>
         <div><a class="Sign-Up" (click)="toSignup()"> Sign Up </a></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col center text-center>
+        <!-- <div>EN</div>
+        <div>
+            <ion-toggle block ng-model="pushNotification.checked"
+            ng-change="pushNotificationChange()">
+            </ion-toggle>
+        </div>
+        <div>中文</div> -->
+        <!-- <div class= "container">
+            <div id="inner">
+                
+            </div>
+        </div> -->
       </ion-col>
     </ion-row>
   </ion-grid>

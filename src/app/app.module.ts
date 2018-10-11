@@ -26,6 +26,8 @@ import { MorePage } from '../pages/more/more';
 import {CallNumber } from '@ionic-native/call-number'
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { ProfilePage } from '../pages/profile/profile';
+import { FormsModule } from '@angular/forms';
+import { ConstantService } from '../services/constants';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { ProfilePage } from '../pages/profile/profile';
     BrowserModule,
     HttpClientModule,
     HttpModule,
+    FormsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -76,6 +79,7 @@ import { ProfilePage } from '../pages/profile/profile';
     StatusBar,
     SplashScreen,
     UserService,
+    ConstantService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CallNumber
   ]

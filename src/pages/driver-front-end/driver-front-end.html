@@ -60,7 +60,12 @@
                             <ion-input type="text" [(ngModel)]="trip.tripCost" name="tripCost"></ion-input>
                         </ion-item> 
 
-                    <button ion-button type="submit" (click)="onPostTrip()" block>Done</button>
+                    <!-- <button ion-button type="submit" (click)="onPostTrip()" block>Done</button> -->
+                        <button ion-button block
+                            color="button"
+                            class= "longButton" 
+                            (click)="onPostTrip()">Done
+                        </button>
 
               </form>
         </ion-col>

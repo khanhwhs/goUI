@@ -2,8 +2,8 @@
     <ion-navbar color="nav-color" >
             <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
         <ion-buttons end>
-        <button ion-button icon-only>
-            <ion-icon name="person"></ion-icon>
+        <button ion-button icon-only (click) = "presentPopover($event)">
+            <ion-icon name="more"></ion-icon>
         </button>
         </ion-buttons>
     </ion-navbar>
@@ -20,21 +20,14 @@
           <div class = "Main-button"> 
             <button ion-button block
             color="button"
-            class= "buttonBottom" 
+            class= "longButton" 
             (click)="cancelTrip()">Confirm
             </button></div>
         </ion-col>
       </ion-row>
       <ion-row>
         <div>
-              For riders, if their trip gets canceled by the driver, then our app will dictate the refund policy.
-
-            If driver cancels > 72 hours of scheduled departure time then no compensation from the driver or app. The app will help the rider find another ride if possible.
-            
-            If driver cancels between 24 to 72 hours of scheduled departure time then the money paid by the rider can be used towards future travels on the app as a credit.
-            
-            If driver cancels within 24 hours of scheduled departure time then the app will provide full refund and also arrange for another trip if available. App will also provide a credit equivalent to the cost of the trip to use in the future.
-            
+            No charges if either party cancels at any time prior to departure time. If deposit was paid by the passenger ahead of time, driver must refund full deposit.                
         </div>
       </ion-row>
     </ion-grid>

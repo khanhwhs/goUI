@@ -60,13 +60,18 @@
     </div>
   
     <div  *ngIf = "isDataAvai != true">
-        You don't have anytrips
+        You don't have any trip
     </div>
     
     <div>
         <ion-item>
-            <button  color="button" ion-button block color="yellow" (click)="searchTrip()">
+            <!-- <button  color="button" ion-button block color="yellow" (click)="searchTrip()">
               Search Trips
+            </button> -->
+            <button ion-button block
+            color="button"
+            class= "longButton" 
+            (click)="searchTrip()">Search Trips
             </button>
           </ion-item> 
     </div>

@@ -23,13 +23,24 @@
         [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.dirty">
       </ion-input>
 
+        <ion-input type="password" [(ngModel)]="confirmPassword" formControlName="confirmPassword" placeholder="Re-enter Password"></ion-input>
+      <div class='form-text error' *ngIf="signupForm.controls.confirmPassword.touched && signupForm.hasError('mismatchedPasswords') && signupForm.controls.password.valid">
+        <ion-label no-margin stacked>Passwords do not match</ion-label>
+      </div>
+
       <ion-input class="inputText" [(ngModel)]="user.phoneNo" formControlName="phoneNumber" type="phoneNumber" placeholder="Phone Number">
       </ion-input>
 
 
-    <button padding ion-button block type="submit" [disabled]="!signupForm.valid">
+    <!-- <button padding ion-button block type="submit" [disabled]="!signupForm.valid">
       Create an Account
+    </button> -->
+    <button ion-button block type="submit" [disabled]="!signupForm.valid"
+          color="button"
+          class= "longButton">Create an Account
     </button>
+    
+    
   </form>
 
   <!-- <button color='light'ion-button block (click)="goToLogin()">

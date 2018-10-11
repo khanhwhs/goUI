@@ -1,0 +1,64 @@
+{
+ "keys": {
+   "accessKey": "ACCESS_KEY_HERE",
+   "secretKey": "SECRET_KEY_HERE"
+ },
+ "applicationId": "APP_ID_HERE",
+ "filesSrc": [
+   "./www/main.js"
+ ],
+ "filesDest": "./",
+ "params": [
+  {
+    "name": "whitespaceRemoval"
+  },
+  {
+    "name": "dotToBracketNotation"
+  },
+  {
+    "name": "stringConcealing"
+  },
+  {
+    "name": "functionReordering"
+  },
+  {
+    "options": {
+      "features": [
+        "opaqueFunctions"
+      ]
+    },
+    "name": "functionOutlining"
+  },
+  {
+    "name": "propertyKeysObfuscation"
+  },
+  {
+    "name": "regexObfuscation"
+  },
+  {
+    "options": {
+      "features": [
+        "opaqueSteps"
+      ]
+    },
+    "name": "controlFlowFlattening"
+  },
+  {
+    "name": "booleanToAnything"
+  },
+  {
+    "name": "identifiersRenaming"
+  },
+  {
+     "options": {
+       "options": [
+         "tolerateBenignPoisoning"
+       ],
+       "threshold": 0
+     },
+     "name": "selfDefending"
+   }
+ ],
+ "areSubscribersOrdered": false,
+ "bail": true
+ }

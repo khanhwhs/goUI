@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { PassFronEndPage } from '../pass-fron-end/pass-fron-end';
+import { MorePage } from '../more/more';
 
 /**
  * Generated class for the CancelTripPage page.
@@ -18,7 +19,7 @@ import { PassFronEndPage } from '../pass-fron-end/pass-fron-end';
 export class CancelTripPage {
   passingJson : any;
   tripJson: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http : Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http : Http, public popoverCtrl: PopoverController) {
     this.passingJson = JSON.parse(this.navParams.get('data')); 
     this.tripJson = this.navParams.get('trip'); 
 
@@ -50,6 +51,14 @@ export class CancelTripPage {
         this.navCtrl.push(PassFronEndPage,{data: this.navParams.get('data')});
       } , 400 );
     
+  }
+
+  presentPopover(myEvent) {
+    let data = this.navParams.get('data');
+    let popover = this.popoverCtrl.create(MorePage, {data:data});
+    popover.present({
+      ev: myEvent
+    });
   }
 
 }
