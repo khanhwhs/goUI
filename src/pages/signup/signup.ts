@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
+import { ConstantService } from '../../services/constants';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the SignupPage page.
@@ -35,7 +37,7 @@ export class SignupPage {
   mismatchedPasswords : false;
   // loading: Loading;
   constructor(public navCtrl: NavController, public http: Http,
-    public formBuilder: FormBuilder) {
+    public formBuilder: FormBuilder, public constantService: ConstantService, private translate: TranslateService, public constant: ConstantService) {
 
       this.signupForm = formBuilder.group({
         name: ['', Validators.compose([Validators.required, Validators.required])],
@@ -62,7 +64,12 @@ export class SignupPage {
       }
     }
 
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+
   ionViewDidLoad() {
+    this.switchLanguage(this.constant.isChinese?'cn':'en');
     this.setBackButtonAction();
     console.log('ionViewDidLoad SignupPage');
   }

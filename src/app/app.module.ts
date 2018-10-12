@@ -6,7 +6,6 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,8 +15,7 @@ import { PassFronEndPage } from '../pages/pass-fron-end/pass-fron-end';
 import { DriverFrontEndPage } from '../pages/driver-front-end/driver-front-end';
 import { SignupPage } from '../pages/signup/signup';
 import {UserService } from '../services/user.service';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { DriverHomePage } from '../pages/driver-home/driver-home';
 import { PassengerHomePage } from '../pages/passenger-home/passenger-home';
 import { TestPage } from '../pages/test/test';
@@ -29,6 +27,10 @@ import { ProfilePage } from '../pages/profile/profile';
 import { FormsModule } from '@angular/forms';
 import { ConstantService } from '../services/constants';
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -36,7 +38,6 @@ import { ConstantService } from '../services/constants';
     ContactPage,
     HomePage,
     LoginPage,
-    TabsPage,
     PassDriverPage,
     PassFronEndPage,
     DriverFrontEndPage,SignupPage,
@@ -53,7 +54,14 @@ import { ConstantService } from '../services/constants';
     HttpClientModule,
     HttpModule,
     FormsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -61,7 +69,6 @@ import { ConstantService } from '../services/constants';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
     LoginPage,
     PassDriverPage,
     PassFronEndPage,
@@ -85,3 +92,7 @@ import { ConstantService } from '../services/constants';
   ]
 })
 export class AppModule {}
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -13,6 +13,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-about-us',
   templateUrl: 'about-us.html',
 })
+// @NgModule({
+//   imports: [
+//       SharedModule    
+//       //..
+//   ],
+//   //..
+// })
 export class AboutUsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

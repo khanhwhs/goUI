@@ -42,24 +42,43 @@ page-home {
     .langDiv{
         text-align:center;
     }
-    #container {
-        background-color: red;
-        overflow: hidden;
-        text-align:center;
-        width: 200px;
+     #container > div
+        {
+            display: inline-block;
+        }
+        #container
+        {
+            text-align: center;
+            margin: 0px auto;
+            width: 40%;
+        }  
+      body {
+        cursor: url('https://ionicframework.com/img/finger.png'), auto;
       }
       
-      .inner {
-        overflow: hidden;
-        width: 2000px;
-        text-align:center;
+      .toggle .track
+      {
+            border-radius: 6px !important;
+            width: 70px;
       }
       
-      .child {
-        // float: left;
-        width: 50px;
-        text-align:center;
-        height: 50px;
+      .toggle .handle
+      {
+            border-radius: 6px !important;
+            width: 32px !important;
+            height: 32px !important;
+            top: 4px !important;
+      }
+      .toggle .handle:before {
+         font-family: "Ionicons";
+         content: "\f13f" !important;
+         top: -11px !important;
+         left: -21.5px !important;
+      }
+      
+      .toggle input:checked + .track .handle {
+          -webkit-transform: translate3d(28px, 0, 0);
+          transform: translate3d(28px, 0, 0);
       }
 
 

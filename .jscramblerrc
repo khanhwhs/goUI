@@ -1,9 +1,9 @@
 {
  "keys": {
-   "accessKey": "ACCESS_KEY_HERE",
-   "secretKey": "SECRET_KEY_HERE"
+   "accessKey": "Manuis1",
+   "secretKey": "Manuis1"
  },
- "applicationId": "APP_ID_HERE",
+ "applicationId": "4990",
  "filesSrc": [
    "./www/main.js"
  ],

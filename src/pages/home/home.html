@@ -3,51 +3,48 @@
        <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
     </ion-navbar>
 </ion-header>
+<!-- <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet"> -->
+<!-- <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script> -->
 
 <ion-content id="welcome">
   <ion-grid class = "body" >
       <ion-row>
           <ion-col center text-center>
               <img src="assets/imgs/logo-2-copy-2@2x.png" />
-              <h1 class = "The-Future-of-Ridesh">The Future of Ridesharing is Here</h1>
+              <h1  class = "The-Future-of-Ridesh" translate>homeTitle</h1>
           </ion-col>
         </ion-row>
         <ion-row>
             <ion-col center text-center>
-                <div class = "The-easiest-solution" >The easiest solution for long distance carsharing, all from your phone</div>
+                <div class = "The-easiest-solution" translate>homeDesc</div>
             </ion-col>
           </ion-row>
     <ion-row>
       <ion-col center text-center>
         <div> 
           <!-- <img src="assets/imgs/main-button@3x.png"  (click)="toLogin()" >  -->
-          <button ion-button block
+          <button  ion-button block
             color="button"
             class= "longButton" 
-            (click)="toLogin()">Login
-            </button>
+            (click)="toLogin()"><div translate>homeLogin</div></button>
         </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col center text-center>
-        <div><a class="Sign-Up" (click)="toSignup()"> Sign Up </a></div>
+        <div><a class="Sign-Up" (click)="toSignup()" translate>homeSignUp</a></div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col center text-center>
-        <!-- <div>EN</div>
+        <div id="container">
+        <div>EN</div>
         <div>
-            <ion-toggle block ng-model="pushNotification.checked"
-            ng-change="pushNotificationChange()">
-            </ion-toggle>
+          <ion-toggle class="toggle-small" toggle-class="toggle-calm" [(ngModel)]="constantService.isChinese" (ngModelChange)="update($event)">
+          </ion-toggle>
         </div>
-        <div>中文</div> -->
-        <!-- <div class= "container">
-            <div id="inner">
-                
-            </div>
-        </div> -->
+        <div>中文</div>
+        </div> 
       </ion-col>
     </ion-row>
   </ion-grid>

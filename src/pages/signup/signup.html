@@ -8,27 +8,27 @@
       <img
         class="goyu_logo"
          src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
-      <div class = "question" >Let's make your profile</div>
+      <div class = "question" translate>sUTitle</div>
     </div>
     
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
 
-      <ion-input formControlName="name" type="name" placeholder="Name" [(ngModel)]="user.firstName">
+      <ion-input formControlName="name" type="name" placeholder="{{'suname' | translate}}" [(ngModel)]="user.firstName">
         </ion-input>  
-      <ion-input [(ngModel)]="user.email" formControlName="email" type="email" placeholder="Your email address" 
+      <ion-input [(ngModel)]="user.email" formControlName="email" type="email" placeholder="{{'suemail' | translate}}"
         [class.invalid]="!signupForm.controls.email.valid && signupForm.controls.email.dirty">
       </ion-input>
     
-      <ion-input [(ngModel)]="user.userPassword" formControlName="password" type="password" placeholder="Your password" 
+      <ion-input [(ngModel)]="user.userPassword" formControlName="password" type="password" placeholder="{{'supass' | translate}}"
         [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.dirty">
       </ion-input>
 
-        <ion-input type="password" [(ngModel)]="confirmPassword" formControlName="confirmPassword" placeholder="Re-enter Password"></ion-input>
+        <ion-input type="password" [(ngModel)]="confirmPassword" formControlName="confirmPassword" placeholder="{{'surepass' | translate}}"></ion-input>
       <div class='form-text error' *ngIf="signupForm.controls.confirmPassword.touched && signupForm.hasError('mismatchedPasswords') && signupForm.controls.password.valid">
         <ion-label no-margin stacked>Passwords do not match</ion-label>
       </div>
 
-      <ion-input class="inputText" [(ngModel)]="user.phoneNo" formControlName="phoneNumber" type="phoneNumber" placeholder="Phone Number">
+      <ion-input class="inputText" [(ngModel)]="user.phoneNo" formControlName="phoneNumber" type="phoneNumber" placeholder="{{'suphone' | translate}}">
       </ion-input>
 
 
@@ -37,7 +37,7 @@
     </button> -->
     <button ion-button block type="submit" [disabled]="!signupForm.valid"
           color="button"
-          class= "longButton">Create an Account
+          class= "longButton"><div translate>cucreate</div>
     </button>
     
     
