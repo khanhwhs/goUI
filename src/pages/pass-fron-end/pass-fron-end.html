@@ -1,26 +1,32 @@
-<ion-header no-border>
-    <ion-toolbar>
-      <div class = "center">
-          <img src="assets/imgs/back@3x.png" (click) = "back()"/>
-          <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
-          <img src="assets/imgs/profile@2x.png" (click) = "back()"/>
-        </div>
-       
-  </ion-toolbar>
+<ion-header>
+    <ion-navbar color="nav-color" >
+            <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
+        <ion-buttons end>
+        <button ion-button icon-only (click) = "presentPopover($event)">
+            <ion-icon name="more"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
-
- 
-
 <ion-content padding>
+        <div class = "question" >Passenger Home</div>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <div *ngIf = "isDataAvai">
-        <div *ngFor="let d of data">
+        <div *ngFor="let d of data; let i = index;">
             <ion-grid class="tripsTable">
               <ion-row>
-                  <ion-col>
+                  <ion-col class = "col col-50">
                       Date: {{ d.createdOn }}
                   </ion-col>
-                  <ion-col>
+                  <ion-col col-4 >
                       Time: {{ d.startTime }}
+                  </ion-col >
+                  <ion-col col-1>
+                    <button (click)="cancelTrip(i)">
+                            <ion-icon name="close"></ion-icon>
+                    </button>
                   </ion-col>
               </ion-row>
               <ion-row>
@@ -33,19 +39,39 @@
                       To: {{ d.destAddrId }}
                   </ion-col>
               </ion-row>
+              <ion-row>
+                <ion-col>
+                   <div>Car Info: {{ d.luggageDesc }}</div> 
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                    <ion-col>
+                        Trip Cost: {{ d.tripCost }}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <div class="TripCost" >Driver: {{ d.driver.firstName}} {{ d.driver.lastName}} &emsp; &emsp;Phone: {{ d.driver.phoneNo}}   </div> 
+                    </ion-col>
+                </ion-row>
               <br>
             </ion-grid>
             </div>
     </div>
   
     <div  *ngIf = "isDataAvai != true">
-        You don't have anytrips
+        You don't have any trip
     </div>
     
     <div>
         <ion-item>
-            <button  color="button" ion-button block color="yellow" (click)="searchTrip()">
+            <!-- <button  color="button" ion-button block color="yellow" (click)="searchTrip()">
               Search Trips
+            </button> -->
+            <button ion-button block
+            color="button"
+            class= "longButton" 
+            (click)="searchTrip()">Search Trips
             </button>
           </ion-item> 
     </div>

@@ -4,19 +4,49 @@ page-driver-home {
         height: 60px;
         -o-object-fit: contain;
         object-fit: contain;
-        width: 70%;
+        width: 100%;
     }
+    .moreInfo{
+        font-family: Roboto;
+        font-size: 15px;
+        color: #000000;
+        background-color: white;
+      } 
 
     .tripsTable{
         background-color: rgb(210, 174, 81);
-        border-radius: 15px;
+        border-radius: 5px;
         border: 1px solid rgb(0, 0, 0);
         background-image:  url(../assets/imgs/background@3x.png);
         padding: 5px;
     }
 
-    // .center{    
-    //     display:inline-block;
-    // }
+    .question {
+        height: 8%;
+        font-family: Roboto;
+        font-size: 17px;
+        font-weight: 300;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #000000;
+      }
+
+      .tableCol2{
+        display:inline-block;
+        width:100%;
+      }
+
+      .tripsContent{
+        
+        border-bottom: 1px solid #57def9;
+        background-image:  url(../assets/imgs/background@3x.png);
+        padding: 0px;
+        border-radius: 5px;
+    }
+
+
 
 }

@@ -20,7 +20,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { DriverHomePage } from '../pages/driver-home/driver-home';
 import { PassengerHomePage } from '../pages/passenger-home/passenger-home';
-
+import { TestPage } from '../pages/test/test';
+import { CancelTripPage } from '../pages/cancel-trip/cancel-trip';
+import { MorePage } from '../pages/more/more';
+import {CallNumber } from '@ionic-native/call-number'
+import { AboutUsPage } from '../pages/about-us/about-us';
+import { ProfilePage } from '../pages/profile/profile';
+import { FormsModule } from '@angular/forms';
+import { ConstantService } from '../services/constants';
 
 @NgModule({
   declarations: [
@@ -34,12 +41,18 @@ import { PassengerHomePage } from '../pages/passenger-home/passenger-home';
     PassFronEndPage,
     DriverFrontEndPage,SignupPage,
     DriverHomePage,
-    PassengerHomePage
+    PassengerHomePage,
+    TestPage,
+    CancelTripPage,
+    MorePage,
+    AboutUsPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpModule,
+    FormsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -55,13 +68,20 @@ import { PassengerHomePage } from '../pages/passenger-home/passenger-home';
     DriverFrontEndPage,
     SignupPage,
     DriverHomePage,
-    PassengerHomePage
+    PassengerHomePage,
+    TestPage,
+    CancelTripPage,
+    MorePage,
+    AboutUsPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     UserService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    ConstantService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CallNumber
   ]
 })
 export class AppModule {}

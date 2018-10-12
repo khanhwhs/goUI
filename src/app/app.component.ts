@@ -15,7 +15,7 @@ import { PassFronEndPage } from '../pages/pass-fron-end/pass-fron-end';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => { 

@@ -20,18 +20,16 @@ page-home {
     
     .goyu_logo {
         width: 120px;
-        height: 82px;
+        height: 60px;
+        -o-object-fit: contain;
         object-fit: contain;
         width: 100%;
     }
     .Sign-Up {
         font-family: Roboto;
-        font-size: 20px;
-        width: 100%;
         text-align: center;
-        color: black !important;
+        color: black
     }
-
     .Main-button {
         width: 100%;
         text-align: center;
@@ -41,5 +39,28 @@ page-home {
         background-image:  url(../assets/imgs/background@3x.png);
         height:100%;
     }
+    .langDiv{
+        text-align:center;
+    }
+    #container {
+        background-color: red;
+        overflow: hidden;
+        text-align:center;
+        width: 200px;
+      }
+      
+      .inner {
+        overflow: hidden;
+        width: 2000px;
+        text-align:center;
+      }
+      
+      .child {
+        // float: left;
+        width: 50px;
+        text-align:center;
+        height: 50px;
+      }
+
 
 }

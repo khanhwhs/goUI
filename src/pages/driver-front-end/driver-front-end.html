@@ -1,6 +1,11 @@
 <ion-header no-border>
     <ion-navbar color="nav-color">
       <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
+      <ion-buttons end>
+        <button ion-button icon-only (click) = "presentPopover($event)">
+            <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
     </ion-navbar>
 </ion-header>
 <ion-content id="welcome">
@@ -46,11 +51,21 @@
                       </ion-item> 
   
                       <ion-item>
-                          <ion-label floating>Luggage Desc.</ion-label>
+                          <ion-label floating>Car Info</ion-label>
                           <ion-input type="text" [(ngModel)]="trip.luggageDesc" name="luggageDesc"></ion-input>
                       </ion-item> 
 
-                    <button ion-button type="submit" (click)="onPostTrip()" block>Done</button>
+                      <ion-item>
+                            <ion-label floating>Trip cost</ion-label>
+                            <ion-input type="text" [(ngModel)]="trip.tripCost" name="tripCost"></ion-input>
+                        </ion-item> 
+
+                    <!-- <button ion-button type="submit" (click)="onPostTrip()" block>Done</button> -->
+                        <button ion-button block
+                            color="button"
+                            class= "longButton" 
+                            (click)="onPostTrip()">Done
+                        </button>
 
               </form>
         </ion-col>

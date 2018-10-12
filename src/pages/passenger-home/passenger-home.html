@@ -1,4 +1,4 @@
-<ion-header no-border>
+<!-- <ion-header no-border>
     <ion-toolbar>
       <div class = "center">
           <img src="assets/imgs/back@3x.png" (click) = "back()"/>
@@ -7,47 +7,102 @@
         </div>
        
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
+
+<ion-header>
+
+        <ion-navbar color="nav-color">
+          <button ion-button icon-only menuToggle (click) = "back()">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      
+                <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
+      
+          <ion-buttons end>
+            <button ion-button icon-only (click) = "presentPopover($event)">
+              <ion-icon name="more"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-navbar>
+      
+      </ion-header>
 
  
 
 <ion-content padding>
+    <div class = "question" >Trips Available</div>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <div *ngIf = "isDataAvai">
-        <div *ngFor="let d of data">
-            <ion-grid class="tripsTable">
-              <ion-row>
-                  <ion-col>
-                      Date: {{ d.createdOn }}
-                  </ion-col>
-                  <ion-col>
-                      Time: {{ d.startTime }}
-                  </ion-col>
+        <div *ngFor="let d of data; let i = index;">
+            <ion-grid class="tripsContent">
+                <!-- <button id='hidden-button' ion-button (click)="openMore()"> -->
+              <ion-row (click)="openMore(d,i)" >
+
+                  <div class= "tableCol">
+                      <img class= "tableProfile" src="assets/imgs/user.png"/>
+                      <!-- <img *ngIf= "i%2!=0" class= "tableProfile" src="assets/imgs/man.png"/> -->
+                  </div>
+                  <div class= "tableCol2">
+                        <ion-row>
+                              <ion-col>
+                                  <div class = "name"> {{ d.driver.firstName }}  {{ d.driver.lastName }} </div> 
+                              </ion-col>
+                          </ion-row>
+                        <ion-row>
+                            <ion-col>
+                               <div class="fromTo" >From: {{ d.startAddrId }}</div> 
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <div class="fromTo" > To: {{ d.destAddrId }}</div> 
+                            </ion-col>
+                        </ion-row>
+                      </div>
+             </ion-row>
+            <ion-row *ngIf = "i == currentIndex" class="Departure">
+                  <div class= "tableCol2">
+                      <ion-row>
+                          <ion-col>
+                             <div class="Departure" >Depature: {{ d.createdOn }}</div> 
+                          </ion-col>
+                      </ion-row>
+                      <ion-row>
+                          <ion-col>
+                              <div class="Departure" > Time: {{ d.startTime }}</div> 
+                          </ion-col>
+                      </ion-row>
+                      <ion-row x class="tripsTable2">
+                          <ion-col>
+                              <div > Seats Available: {{ d.seats}}</div> 
+                          </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col>
+                           <div>Car Info: {{ d.luggageDesc }}</div> 
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col>
+                            <div class="TripCost" >Trip Cost: {{ d.tripCost }}</div> 
+                        </ion-col>
+                      </ion-row>
+                  </div>
+                  <div class= "tableCol">
+                      <button  (click)="book(d)" class= "buttonBottom" (click)="bookTrip()">Book</button>
+                  </div>
+
               </ion-row>
-              <ion-row>
-                  <ion-col>
-                      From: {{ d.startAddrId }}
-                  </ion-col>
-              </ion-row>
-              <ion-row>
-                  <ion-col>
-                      To: {{ d.destAddrId }}
-                  </ion-col>
-              </ion-row>
-              <br>
+
             </ion-grid>
-            </div>
+
+        </div>
     </div>
   
     <div  *ngIf = "isDataAvai != true">
-        You don't have anytrips
-    </div>
-    
-    <div>
-        <ion-item>
-            <button  color="button" ion-button block color="yellow" (click)="searchTrip()">
-              Search Trips
-            </button>
-          </ion-item> 
+        loading...
     </div>
       
   </ion-content>

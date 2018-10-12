@@ -21,11 +21,16 @@ page-login {
     .back-button-icon-md {
       color: rgb(252, 190, 35);
     }
+    .Main-button {
+      width: 100%;
+      text-align: center;
+    }
     .goyu_logo {
       width: 120px;
-      height: 82px;
+      height: 60px;
+      -o-object-fit: contain;
       object-fit: contain;
-      width: 100%;
+      width: 85%;
   }
   }
   

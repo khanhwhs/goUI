@@ -1,3 +1,136 @@
 page-passenger-home {
+    .question {
+        height: 5%;
+        font-family: Roboto;
+        font-size: 17px;
+        font-weight: 300;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #000000;
+      }
+    .text {
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 300;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #000000;
+      }
+
+      .goyu_logo {
+        width: 120px;
+        height: 60px;
+        -o-object-fit: contain;
+        object-fit: contain;
+        width: 100%;
+    }
+    .driver-button {
+        height : 90%;
+    }
+    .passenger-button{
+        height : 90%;
+    }
+    .driverRow{
+          margin-top: 20px;
+    }
+
+    .Main-button {
+        width: 100%;
+        text-align: center;
+      }
+    .body {
+        object-fit: contain;
+        background-image:  url(../assets/imgs/background@3x.png);
+        height:100%;
+    }
+    .back-button-icon-md {
+        color: rgb(252, 190, 35);
+      }
+      .tripsContent{
+        
+        border-bottom: 1px solid #57def9;
+        background-image:  url(../assets/imgs/background@3x.png);
+        padding: 0px;
+        
+        
+    }
+    // .tripsGrid{
+        
+    // }
+    .tableProfile{
+        width : 70%;
+    }
+    #hidden-button{
+        height: 100%;
+        width: 100%;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+    .name{
+        font-size: 18px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+
+    }
+
+    .Departure{
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+        background-color: white;
+      }
+
+      .fromTo{
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+      }
+      .tableCol{
+        display:inline-block;
+        width:30%;
+        position: relative;
+      }
+      .buttonBottom{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        height: 3.6rem;
+        font-size: 1.4rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: black;
+        background-color: #57def9;
+        width: 90px;
+        height: 40px;
+      }
+      .tableCol2{
+        display:inline-block;
+        width:70%;
+      }
+
+      .details{
+        }
 
 }

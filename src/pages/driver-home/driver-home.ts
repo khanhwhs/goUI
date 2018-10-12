@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Navbar, PopoverController } from 'ionic-angular';
 import { DriverFrontEndPage } from '../driver-front-end/driver-front-end';
 import { Http } from '@angular/http';
 import { PassDriverPage } from '../pass-driver/pass-driver';
+import { MorePage } from '../more/more';
 
 /**
  * Generated class for the DriverHomePage page.
@@ -17,18 +18,17 @@ import { PassDriverPage } from '../pass-driver/pass-driver';
   templateUrl: 'driver-home.html',
 })
 export class DriverHomePage {
+  @ViewChild(Navbar) navBar: Navbar;
   passingJson = null;
 
   data : any;
   isDataAvai : boolean;
+  currentIndex : any;
 
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-    this.passingJson = JSON.parse(this.navParams.get('data')); 
-  }
-
-  ionViewDidLoad() {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public popoverCtrl: PopoverController) {
+    this.passingJson = JSON.parse(this.navParams.get('data'));
     let url = document.URL.split('#')[0];
     let headers = new Headers();
     console.log('ionViewDidLoad DriverHomePage');
@@ -52,7 +52,24 @@ export class DriverHomePage {
       });
   }
 
+  openMore(d,i){
+    this.currentIndex = i;
+  }
+
+  ionViewDidLoad() {
+    this.setBackButtonAction();
+  }
+
+  presentPopover(myEvent) {
+    let data = this.navParams.get('data');
+    let popover = this.popoverCtrl.create(MorePage, {data:data});
+    popover.present({
+      ev: myEvent
+    });
+  }
+
   createTrip(){
+    console.log(this.navParams.get('data'));
     let data = this.navParams.get('data');
     this.navCtrl.push(DriverFrontEndPage,  {
       data: data
@@ -66,5 +83,16 @@ export class DriverHomePage {
       data: data
     });
   }
+
+  //Method to override the default back button action
+  setBackButtonAction(){
+    this.navBar.backButtonClick = () => {
+      //Write here wherever you wanna do
+      let data = this.navParams.get('data');
+        this.navCtrl.push(PassDriverPage,  {
+          data: data
+        });
+      }
+ }
 
 }

@@ -1,21 +1,11 @@
-<ion-header no-border>
-    <ion-navbar>
-      <ion-title>
-        Login
-      </ion-title>
-    </ion-navbar>
+<ion-header>
+        <ion-navbar>
+            <img src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
+         </ion-navbar>
   </ion-header>
 
 
 <ion-content padding>
-  <div>
-      <!-- <img
-      src="assets/imgs/back@3x.png" (click) = "back()"> -->
-    <img
-      class="goyu_logo"
-       src="assets/imgs/goyu-logo@3x.png" class="goyu_logo"/>
-  </div>
-
   <form [formGroup]="credentialsForm">
 
       <ion-item>
@@ -30,11 +20,11 @@
         [(ngModel)]="user.userPassword"  type="password"></ion-input>
       </ion-item>      
     
-      <ion-item>
+      <!-- <ion-item>
         <button  color="button" class="login-button" ion-button block color="blue" (click)="onSignInClick()">
           Sign in
         </button>
-      </ion-item>  
+      </ion-item>   -->
   </form>
 <!--     
       <ion-row>
@@ -52,23 +42,32 @@
           class="login-button"
           (click)="onSignInClick()">Sign In
   </button> -->
+<br>
+  <div class = "Main-button">
+     <!-- <img src="assets/imgs/main-button@3x.png"  (click)="onSignInClick()" >  -->
+     <button ion-button block
+     color="button"
+     class= "longButton" 
+     (click)="onSignInClick()">Login
+     </button>
+  </div>
 
   <!-- <button ion-button
           block
           icon-start
           color="google-button"
           class="login-button"
-          (click)="onGoogleClick()">
+          (click)="onSignInClick()">
     <ion-icon name="logo-googleplus"></ion-icon>
-    Google Sign In
+    Google Sign In  
   </button> -->
-
-  <!-- <button ion-button
+<!-- 
+  <button ion-button
           block
           icon-start
           color="facebook-button"
           class="login-button"
-          (click)="onFacebookClick()">
+          (click)="onSignInClick()">
     <ion-icon name="logo-facebook"></ion-icon>
     Facebook Login
   </button> -->

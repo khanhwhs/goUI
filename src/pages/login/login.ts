@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Loading, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Loading, AlertController, Navbar } from 'ionic-angular';
 import { PassDriverPage } from '../pass-driver/pass-driver';
 import { HomePage } from '../home/home';
 import { User } from '../../models/User';
@@ -20,6 +20,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  @ViewChild(Navbar) navBar: Navbar;
   user = new User();
   loading: Loading;
   emailColor: string = 'green';
@@ -35,8 +36,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-     
-    
+    this.setBackButtonAction();
   }
 
 
@@ -54,7 +54,7 @@ export class LoginPage {
       })
       .toPromise()
       .then((data: any) => {
-            if( data._body != null){
+            if( data._body){
               this.navCtrl.push(PassDriverPage,  {
                 data: data._body
               });
@@ -78,6 +78,16 @@ export class LoginPage {
           }
         )
       .catch(console.log);
+  }
+
+  setBackButtonAction(){
+    this.navBar.backButtonClick = () => {
+      //Write here wherever you wanna do
+      let data = this.navParams.get('data');
+        this.navCtrl.push(HomePage,  {
+          data: data
+        });
+      }
   }
 
   back(){
