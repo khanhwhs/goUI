@@ -9,7 +9,7 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
- <div class = "question" >Driver Home</div>
+ <div class = "question" translate>DriverHome</div>
   <div *ngIf = "isDataAvai">
       <div *ngFor="let d of data; let i = index">
           <ion-grid class="tripsContent">
@@ -18,7 +18,7 @@
                     <div class='tableCol2'>
                         <ion-row>
                             <ion-col class= "col col-50">
-                                Date: {{ d.createdOn }}
+                                <div translate>dDate</div>: {{ d.createdOn }}
                             </ion-col>
                             <ion-col col-5 >
                                 Time: {{ d.startTime }}

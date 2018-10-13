@@ -9,13 +9,13 @@
   <form [formGroup]="credentialsForm">
 
       <ion-item>
-        <ion-label floating>Email</ion-label>
+        <ion-label floating translate>lEmail</ion-label>
         <ion-input [formControl]="credentialsForm.controls['email']"
         [(ngModel)]="user.userName" type="email"></ion-input>
       </ion-item>
       
       <ion-item>
-        <ion-label floating>Password</ion-label>
+        <ion-label floating translate>lPassword</ion-label>
         <ion-input [formControl]="credentialsForm.controls['password']"
         [(ngModel)]="user.userPassword"  type="password"></ion-input>
       </ion-item>      
@@ -48,7 +48,7 @@
      <button ion-button block
      color="button"
      class= "longButton" 
-     (click)="onSignInClick()">Login
+     (click)="onSignInClick()" ><div translate>login</div>
      </button>
   </div>
 

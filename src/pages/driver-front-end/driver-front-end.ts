@@ -6,6 +6,8 @@ import { Http, Headers } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'; 
 import { DriverHomePage } from '../driver-home/driver-home';
 import { MorePage } from '../more/more';
+import { TranslateService } from '@ngx-translate/core';
+import { ConstantService } from '../../services/constants';
 
 /**
  * Generated class for the DriverFrontEndPage page.
@@ -29,7 +31,8 @@ export class DriverFrontEndPage {
 
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController,
               public navParams: NavParams,
-              private formBuilder: FormBuilder, public http : Http) {
+              private formBuilder: FormBuilder, public http : Http
+              ,private translate: TranslateService, public constant: ConstantService) {
    this.data = this.navParams.get('data');
    this.json = JSON.parse(this.data);    
    this.tripForm = this.formBuilder.group({
@@ -43,6 +46,14 @@ export class DriverFrontEndPage {
       luggageDesc : [''],
       isRoundTrip : ['']
     });
+  }
+
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+
+  ionViewDidLoad() {
+    this.switchLanguage(this.constant.isChinese?'cn':'en');
   }
 
   presentPopover(myEvent) {

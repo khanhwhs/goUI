@@ -6,6 +6,8 @@ import { User } from '../../models/User';
 import { Http } from '@angular/http';
 import {Location} from '@angular/common';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+import { ConstantService } from '../../services/constants';
 
 /**
  * Generated class for the LoginPage page.
@@ -27,7 +29,7 @@ export class LoginPage {
   credentialsForm: FormGroup;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-    public navParams: NavParams, public http: Http, private formBuilder: FormBuilder) {
+    public navParams: NavParams, public http: Http, private formBuilder: FormBuilder, private translate: TranslateService, public constant: ConstantService) {
      
     this.credentialsForm = this.formBuilder.group({
       email: [''],
@@ -35,7 +37,12 @@ export class LoginPage {
     });
   }
 
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+
   ionViewDidLoad() {
+    this.switchLanguage(this.constant.isChinese?'cn':'en');
     this.setBackButtonAction();
   }
 

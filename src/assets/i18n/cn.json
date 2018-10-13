@@ -9,5 +9,24 @@
     "supass" : "密码",
     "surepass" : "再次输入密码",
     "suphone" : "联系电话",
-    "cucreate" : "完成"
+    "cucreate" : "完成",
+    "login" : "登陆",
+    "lEmail": "电子邮箱",
+    "lPassword":"密码",
+    "dpTitle": "您今天的身份是?",
+    "dpPass":"乘客",
+    "dpDriver":"驾驶员",
+    "DriverHome":"驾驶员主页",
+    "dhNoTrips":"您还没有安排行程",
+    "dCreate":"创建行程",
+    "dplanTrip":"请告诉我您的行程规划",
+    "dFrom": "出发地",
+    "dTo":"目的地",
+    "dDate":"出发日期",
+    "ddTime":"出发时间",
+    "dRoundT":"是否往返",
+    "dSeats":"几个乘客座位",
+    "dCarInfo":"车辆信息",
+    "dTripCost":"价格"
+
 }

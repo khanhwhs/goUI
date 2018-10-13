@@ -8,6 +8,8 @@ import { CancelTripPage } from '../cancel-trip/cancel-trip';
 import { MorePage } from '../more/more';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { TranslateService } from '@ngx-translate/core';
+import { ConstantService } from '../../services/constants';
 
 /**
  * Generated class for the PassFronEndPage page.
@@ -29,7 +31,9 @@ export class PassFronEndPage {
   isDataAvai : boolean;
   trips: Observable<any>;
 
-  constructor(public navCtrl: NavController,private httpClient: HttpClient, public navParams: NavParams, public http: Http, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController,private httpClient: HttpClient,
+     public navParams: NavParams, public http: Http, public popoverCtrl: PopoverController
+     ,private translate: TranslateService, public constant: ConstantService) {
     
     this.passingJson = JSON.parse(this.navParams.get('data')); 
     this.loadPassengersTrip();
@@ -92,7 +96,12 @@ export class PassFronEndPage {
     }, 2000);
   }
 
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+
   ionViewDidLoad() {
+    this.switchLanguage(this.constant.isChinese?'cn':'en');
     this.setBackButtonAction();
     
   }

@@ -4,6 +4,8 @@ import { PassFronEndPage } from '../pass-fron-end/pass-fron-end';
 import { DriverFrontEndPage } from '../driver-front-end/driver-front-end';
 import { DriverHomePage } from '../driver-home/driver-home';
 import { MorePage } from '../more/more';
+import { TranslateService } from '@ngx-translate/core';
+import { ConstantService } from '../../services/constants';
 
 /**
  * Generated class for the PassDriverPage page.
@@ -19,7 +21,7 @@ import { MorePage } from '../more/more';
 })
 export class PassDriverPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private popoverCtrl: PopoverController,private translate: TranslateService, public constant: ConstantService) {
   }
 
   presentPopover(myEvent) {
@@ -30,7 +32,12 @@ export class PassDriverPage {
     });
   }
 
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+
   ionViewDidLoad() {
+    this.switchLanguage(this.constant.isChinese?'cn':'en');
     console.log('ionViewDidLoad PassDriverPage');
     // console.log(this.navParams.get('data'));
   }

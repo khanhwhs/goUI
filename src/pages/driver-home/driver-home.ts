@@ -4,6 +4,8 @@ import { DriverFrontEndPage } from '../driver-front-end/driver-front-end';
 import { Http } from '@angular/http';
 import { PassDriverPage } from '../pass-driver/pass-driver';
 import { MorePage } from '../more/more';
+import { TranslateService } from '@ngx-translate/core';
+import { ConstantService } from '../../services/constants';
 
 /**
  * Generated class for the DriverHomePage page.
@@ -27,7 +29,8 @@ export class DriverHomePage {
 
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public popoverCtrl: PopoverController
+    ,private translate: TranslateService, public constant: ConstantService) {
     this.passingJson = JSON.parse(this.navParams.get('data'));
     let url = document.URL.split('#')[0];
     let headers = new Headers();
@@ -56,7 +59,12 @@ export class DriverHomePage {
     this.currentIndex = i;
   }
 
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
+
   ionViewDidLoad() {
+    this.switchLanguage(this.constant.isChinese?'cn':'en');
     this.setBackButtonAction();
   }
 
