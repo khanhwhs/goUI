@@ -85,9 +85,6 @@ export class SignupPage {
       var headers = new Headers();
         headers["Access-Control-Allow-Origin"] = "*";
         headers.append('Content-Type', 'application/json');
-      let options = {
-          headers: headers
-     };
 
       this.http.post('http://Gouspring.us-east-2.elasticbeanstalk.com/addUser', JSON.stringify(this.user), {headers: headers})
       .map(res => res.json())

@@ -49,8 +49,8 @@ page-home {
         #container
         {
             text-align: center;
-            margin: 0px auto;
-            width: 40%;
+            margin: 1px auto;
+            width: 45%;
         }  
       body {
         cursor: url('https://ionicframework.com/img/finger.png'), auto;
@@ -61,6 +61,10 @@ page-home {
             border-radius: 6px !important;
             width: 70px;
       }
+
+      .login-facebook {
+        margin-top: 12px;
+       }
       
       .toggle .handle
       {
@@ -79,6 +83,10 @@ page-home {
       .toggle input:checked + .track .handle {
           -webkit-transform: translate3d(28px, 0, 0);
           transform: translate3d(28px, 0, 0);
+      }
+
+      .toggle{
+        background-color: transparent;
       }
 
 

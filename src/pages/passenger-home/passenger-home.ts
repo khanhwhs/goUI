@@ -5,6 +5,8 @@ import { PassFronEndPage } from '../pass-fron-end/pass-fron-end';
 import { User } from '../../models/User';
 import { PassDriverPage } from '../pass-driver/pass-driver';
 import { MorePage } from '../more/more';
+import { TranslateService } from '@ngx-translate/core';
+import { ConstantService } from '../../services/constants';
 
 /**
  * Generated class for the PassengerHomePage page.
@@ -19,7 +21,7 @@ import { MorePage } from '../more/more';
   templateUrl: 'passenger-home.html',
 })
 export class PassengerHomePage {
-
+  user = new User();
   passingJson = null;
 
   data : any;
@@ -27,7 +29,8 @@ export class PassengerHomePage {
   isExpand : boolean;
   currentIndex : any;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private popoverCtrl: PopoverController
+    ,private translate: TranslateService, public constant: ConstantService) {
     this.passingJson = JSON.parse(this.navParams.get('data'));
     this.isExpand = false;
     let url = document.URL.split('#')[0];
@@ -78,8 +81,12 @@ export class PassengerHomePage {
     console.log(data);
   }
 
-  ionViewDidLoad() {
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
 
+  ionViewDidLoad() {
+    this.switchLanguage(this.constant.isChinese?'cn':'en');
   }
 
   back(){

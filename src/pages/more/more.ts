@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { CallNumber } from '@ionic-native/call-number';
 import { AboutUsPage } from '../about-us/about-us';
 import { ProfilePage } from '../profile/profile';
+import { TranslateService } from '@ngx-translate/core';
+import { ConstantService } from '../../services/constants';
 
 /**
  * Generated class for the MorePage page.
@@ -14,10 +16,10 @@ import { ProfilePage } from '../profile/profile';
 @Component({
   template: `
     <ion-list>
-      <button ion-item (click)="profileMe()">Profile</button>
-      <button ion-item (click)="aboutUs()">About Us</button>
-      <button ion-item (click)="launchDialer('3176456777')">Customer Service</button>
-      <button ion-item (click)="launchDialer('911')">Call 911</button>
+      <button ion-item (click)="profileMe()"><div translate>mProfile</div></button>
+      <button ion-item (click)="aboutUs()"><div translate>mAboutUs</div></button>
+      <button ion-item (click)="launchDialer('3176456777')"><div translate>mService</div></button>
+      <button ion-item (click)="launchDialer('911')"><div translate>m911</div></button>
     </ion-list>
   `
 })
@@ -25,10 +27,15 @@ import { ProfilePage } from '../profile/profile';
 export class MorePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public viewCtrl: ViewController, private callNumber: CallNumber) {
+    public viewCtrl: ViewController, private callNumber: CallNumber,private translate: TranslateService, public constant: ConstantService) {
+  }
+
+  switchLanguage(language: string) {
+    this.translate.use(language);
   }
 
   ionViewDidLoad() {
+    this.switchLanguage(this.constant.isChinese?'cn':'en');
     console.log('ionViewDidLoad MorePage');
   }
   close() {

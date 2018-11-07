@@ -30,7 +30,7 @@
  
 
 <ion-content padding>
-    <div class = "question" >Trips Available</div>
+    <div class = "question" translate>pAvailable</div>
     <ion-refresher (ionRefresh)="doRefresh($event)">
             <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
@@ -52,12 +52,12 @@
                           </ion-row>
                         <ion-row>
                             <ion-col>
-                               <div class="fromTo" >From: {{ d.startAddrId }}</div> 
+                               <div class="fromTo">{{'pFrom' | translate}}: {{ d.startAddrId }}</div> 
                             </ion-col>
                         </ion-row>
                         <ion-row>
                             <ion-col>
-                                <div class="fromTo" > To: {{ d.destAddrId }}</div> 
+                                <div class="fromTo" > {{'pTo' | translate}}: {{ d.destAddrId }}</div> 
                             </ion-col>
                         </ion-row>
                       </div>
@@ -66,32 +66,32 @@
                   <div class= "tableCol2">
                       <ion-row>
                           <ion-col>
-                             <div class="Departure" >Depature Date: {{ d.createdOn }}</div> 
+                             <div class="Departure">{{'pDDate' | translate}}: {{ d.createdOn }}</div> 
                           </ion-col>
                       </ion-row>
                       <ion-row>
                           <ion-col>
-                              <div class="Departure" > Time: {{ d.startTime }}</div> 
+                              <div class="Departure"> {{'pTime' | translate}}: {{ d.startTime }}</div> 
                           </ion-col>
                       </ion-row>
                       <ion-row x class="tripsTable2">
                           <ion-col>
-                              <div > Seats Available: {{ d.seats}}</div> 
+                              <div> {{'pSeats' | translate}}: {{ d.seats}}</div> 
                           </ion-col>
                       </ion-row>
                       <ion-row>
                         <ion-col>
-                           <div>Car Info: {{ d.luggageDesc }}</div> 
+                           <div >{{'pcar' | translate}}: {{ d.luggageDesc }}</div> 
                         </ion-col>
                       </ion-row>
                       <ion-row>
                         <ion-col>
-                            <div class="TripCost" >Trip Cost: {{ d.tripCost }}</div> 
+                            <div class="TripCost" >{{'pTripCost' | translate}}: {{ d.tripCost }}</div> 
                         </ion-col>
                       </ion-row>
                   </div>
                   <div class= "tableCol">
-                      <button  (click)="book(d)" class= "buttonBottom" (click)="bookTrip()">Book</button>
+                      <button  (click)="book(d)" class= "buttonBottom" (click)="bookTrip()">{{'pBook' | translate}}</button>
                   </div>
 
               </ion-row>
@@ -101,8 +101,6 @@
         </div>
     </div>
   
-    <div  *ngIf = "isDataAvai != true">
-        loading...
-    </div>
+    <div  *ngIf = "isDataAvai != true" translate>pLoading</div>
       
   </ion-content>

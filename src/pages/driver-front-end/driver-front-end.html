@@ -28,17 +28,17 @@
                   </ion-item>   
 
                   <ion-item>
-                      <ion-label>Date</ion-label>
+                      <ion-label><div translate>dDate</div></ion-label>
                       <ion-datetime displayFormat="MMM DD, YYYY"  [(ngModel)]="trip.createdOn"  name="createdOn" required></ion-datetime>
                     </ion-item>
   
                     <ion-item>
-                        <ion-label>Departure Time</ion-label>
+                        <ion-label><div translate>ddTime</div></ion-label>
                         <ion-datetime displayFormat="HH:mm A" [(ngModel)]="trip.startTime" name="startTime"></ion-datetime>
                       </ion-item> 
   
                       <ion-item>
-                          <ion-label >Round Trip</ion-label>
+                          <ion-label ><div translate>dRoundT</div></ion-label>
                           <ion-select [(ngModel)]="trip.isRoundTrip" name="isRoundTrip" interface="action-sheet">
                               <ion-option value="1" selected = "true">Yes</ion-option>
                               <ion-option value="0">No</ion-option>
@@ -46,17 +46,17 @@
                       </ion-item> 
                 
                       <ion-item>
-                          <ion-label >Number of Seats</ion-label>
+                          <ion-label ><div translate>dSeats</div></ion-label>
                           <ion-input type="text" [(ngModel)]="trip.seats" name="seats"></ion-input>
                       </ion-item> 
   
                       <ion-item>
-                          <ion-label floating>Car Info</ion-label>
+                          <ion-label floating><div translate>dCarInfo</div></ion-label>
                           <ion-input type="text" [(ngModel)]="trip.luggageDesc" name="luggageDesc"></ion-input>
                       </ion-item> 
 
                       <ion-item>
-                            <ion-label floating>Trip cost</ion-label>
+                            <ion-label floating><div translate>dTripCost</div></ion-label>
                             <ion-input type="text" [(ngModel)]="trip.tripCost" name="tripCost"></ion-input>
                         </ion-item> 
 
@@ -64,7 +64,7 @@
                         <button ion-button block
                             color="button"
                             class= "longButton" 
-                            (click)="onPostTrip()">Done
+                            (click)="onPostTrip()"><div translate>dDone</div>
                         </button>
 
               </form>

@@ -30,6 +30,7 @@ import { ConstantService } from '../services/constants';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     ProfilePage
   ],
   providers: [
+    Facebook,
     StatusBar,
     SplashScreen,
     UserService,

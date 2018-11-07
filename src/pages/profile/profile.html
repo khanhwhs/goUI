@@ -9,26 +9,26 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-        <h1 class = "question" >My Profile</h1>
+        <h1 class = "question" translate>aProfile</h1>
           <ion-grid class="tripsTable">
               <ion-row>
                   <ion-col class = "col col-50">
-                       Name: {{ data.firstName }}  {{ data.lastName }}
+                    {{'aName' | translate}}: {{ data.firstName }}  {{ data.lastName }}
                   </ion-col>
               </ion-row>
               <ion-row>
                   <ion-col>
-                      Phone Number: {{ data.phoneNo }}
+                    {{'aPhone' | translate}}: {{ data.phoneNo }}
                   </ion-col>
               </ion-row>
               <ion-row>
                   <ion-col>
-                      Username: {{ data.userName }}
+                    {{'aUsername' | translate}}: {{ data.userName }}
                   </ion-col>
               </ion-row>
               <ion-row>
                   <ion-col>
-                      Email: {{ data.email }}
+                    {{'aMail' | translate}}: {{ data.email }}
                   </ion-col>
             </ion-row>  
           </ion-grid>  

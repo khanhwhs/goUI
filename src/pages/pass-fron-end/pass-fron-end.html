@@ -9,7 +9,7 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-        <div class = "question" >Passenger Home</div>
+        <div class = "question">{{'pHome' | translate}}</div>
     <ion-refresher (ionRefresh)="doRefresh($event)">
             <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
@@ -17,11 +17,10 @@
         <div *ngFor="let d of data; let i = index;">
             <ion-grid class="tripsTable">
               <ion-row>
-                  <ion-col class = "col col-50">
-                      Date: {{ d.createdOn }}
+                  <ion-col class = "col col-50">{{'pDDate' | translate}}: {{ d.createdOn }}
                   </ion-col>
                   <ion-col col-4 >
-                      Time: {{ d.startTime }}
+                    {{'pTime' | translate}}: {{ d.startTime }}
                   </ion-col >
                   <ion-col col-1>
                     <button (click)="cancelTrip(i)">
@@ -31,27 +30,27 @@
               </ion-row>
               <ion-row>
                   <ion-col>
-                      From: {{ d.startAddrId }}
+                    {{'pFrom' | translate}}: {{ d.startAddrId }}
                   </ion-col>
               </ion-row>
               <ion-row>
                   <ion-col>
-                      To: {{ d.destAddrId }}
+                    {{'pTo' | translate}}: {{ d.destAddrId }}
                   </ion-col>
               </ion-row>
               <ion-row>
                 <ion-col>
-                   <div>Car Info: {{ d.luggageDesc }}</div> 
+                   <div>{{'pcar' | translate}}: {{ d.luggageDesc }}</div> 
                 </ion-col>
               </ion-row>
               <ion-row>
                     <ion-col>
-                        Trip Cost: {{ d.tripCost }}
+                        {{'pTripCost' | translate}}: {{ d.tripCost }}
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <div class="TripCost" >Driver: {{ d.driver.firstName}} {{ d.driver.lastName}} &emsp; &emsp;Phone: {{ d.driver.phoneNo}}   </div> 
+                        <div class="TripCost" >{{'pdName' | translate}}: {{ d.driver.firstName}} {{ d.driver.lastName}} &emsp; &emsp;{{'pPhone' | translate}}: {{ d.driver.phoneNo}}   </div> 
                     </ion-col>
                 </ion-row>
               <br>
@@ -59,9 +58,7 @@
             </div>
     </div>
   
-    <div  *ngIf = "isDataAvai != true">
-        You don't have any trips
-    </div>
+    <div  *ngIf = "isDataAvai != true">{{'pNoTrips' | translate}}</div>
     
     <div>
         <ion-item>
@@ -71,7 +68,7 @@
             <button ion-button block
             color="button"
             class= "longButton" 
-            (click)="searchTrip()">Search Trips
+            (click)="searchTrip()">{{'pSearch' | translate}}
             </button>
           </ion-item> 
     </div>

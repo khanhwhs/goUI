@@ -9,7 +9,7 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
- <div class = "question" translate>DriverHome</div>
+ <div class = "question" translate>{{'DriverHome' | translate}}</div>
   <div *ngIf = "isDataAvai">
       <div *ngFor="let d of data; let i = index">
           <ion-grid class="tripsContent">
@@ -18,30 +18,30 @@
                     <div class='tableCol2'>
                         <ion-row>
                             <ion-col class= "col col-50">
-                                <div translate>dDate</div>: {{ d.createdOn }}
+                                {{'dDate' | translate}}: {{ d.createdOn }}
                             </ion-col>
                             <ion-col col-5 >
-                                Time: {{ d.startTime }}
+                                {{'pTime' | translate}}: {{ d.startTime }}
                             </ion-col>
                         </ion-row>
                         <ion-row>
                             <ion-col>
-                                From: {{ d.startAddrId }}
+                                {{'dFrom' | translate}}: {{ d.startAddrId }}
                             </ion-col>
                         </ion-row>
                         <ion-row>
                             <ion-col>
-                                To: {{ d.destAddrId }}
+                                {{'dTo' | translate}}: {{ d.destAddrId }}
                             </ion-col>
                         </ion-row>
                         <ion-row>
                                 <ion-col>
-                                    Trip Cost: {{ d.tripCost }}
+                                    {{'dTripCost' | translate}}: {{ d.tripCost }}
                                 </ion-col>
                         </ion-row>
                         <ion-row>
-                            <ion-col class= "col col-50">Round Trip: {{ d.isRoundTrip == 1? 'Yes':'No' }}</ion-col>
-                            <ion-col col-5>Car Info: {{ d.luggageDesc}}</ion-col>
+                            <ion-col class= "col col-50">{{'dRoundT' | translate}}: {{ d.isRoundTrip == 1? 'Yes':'No' }}</ion-col>
+                            <ion-col col-5>{{'dCarInfo' | translate}}:: {{ d.luggageDesc}}</ion-col>
                         </ion-row>
                     </div>
                 </ion-row>
@@ -51,7 +51,7 @@
                     <div *ngFor="let i of d.passengerList;">
                         <ion-row>
                           <ion-col>
-                            <div class="TripCost" >Passenger: {{i.firstName}} {{i.lastName}} &emsp; &emsp;phone: {{ i.phoneNo}}   </div> 
+                            <div class="TripCost" >{{'dhPass' | translate}}: {{i.firstName}} {{i.lastName}} &emsp; &emsp;{{'pPhone' | translate}}: {{ i.phoneNo}}   </div> 
                           </ion-col>
                         </ion-row>
                     </div>
@@ -60,9 +60,7 @@
           </div>
   </div>
 
-  <div  *ngIf = "isDataAvai != true">
-      You don't have any trips
-  </div>
+  <div  *ngIf = "isDataAvai != true">{{'dhNoTrips' | translate}}</div>
   
   <div>
       <ion-item>
@@ -72,7 +70,7 @@
           <button ion-button block
             color="button"
             class= "longButton" 
-            (click)="createTrip()">Create Trip
+            (click)="createTrip()"><div translate>dCreate</div>
             </button>
         </ion-item> 
   </div>

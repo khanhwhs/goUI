@@ -27,6 +27,15 @@
             color="button"
             class= "longButton" 
             (click)="toLogin()"><div translate>homeLogin</div></button>
+            <button ion-button
+              block
+              icon-start
+              color="button"
+              class="longButton"
+              (click)="fbLoginAction()">
+              <ion-icon name="logo-facebook"></ion-icon>
+              Facebook Login
+            </button>
         </div>
       </ion-col>
     </ion-row>
@@ -38,12 +47,14 @@
     <ion-row>
       <ion-col center text-center>
         <div id="container">
-        <div>EN</div>
-        <div>
-          <ion-toggle class="toggle-small" toggle-class="toggle-calm" [(ngModel)]="constantService.isChinese" (ngModelChange)="update($event)">
-          </ion-toggle>
-        </div>
-        <div>中文</div>
+          <div>EN</div>
+          <div>
+            <ion-item class = "toggle">
+              <ion-toggle [(ngModel)]="constantService.isChinese" (ngModelChange)="update($event)">
+                </ion-toggle>
+            </ion-item>
+          </div>
+          <div>中文</div>
         </div> 
       </ion-col>
     </ion-row>
