@@ -16,7 +16,7 @@ import { ProfilePage } from '../profile/profile';
     <ion-list>
       <button ion-item (click)="profileMe()">Profile</button>
       <button ion-item (click)="aboutUs()">About Us</button>
-      <button ion-item (click)="launchDialer('3176456777')">Customer Service</button>
+      <button ion-item (click)="launchDialer('2489906643')">Customer Service</button>
       <button ion-item (click)="launchDialer('911')">Call 911</button>
     </ion-list>
   `
