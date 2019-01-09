@@ -104,7 +104,7 @@ export class PassengerHomePage {
     else url = "http://Gouspring.us-east-2.elasticbeanstalk.com/";
     
     var headers = new Headers();
-        headers["Access-Control-Allow-Origin"] = "*";
+        // headers["Access-Control-Allow-Origin"] = "*";  
         headers.append('Content-Type', 'application/json');
 
     console.log(this.data[this.currentIndex]);
